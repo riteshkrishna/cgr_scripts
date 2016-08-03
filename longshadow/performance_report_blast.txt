@@ -1,0 +1,18 @@
+--
+BLAST_DB=../Databases/Ensemble-Human-genes.fa
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1.fa
+OUTPUT_FILE=output_blast/exonicReadsOnHumanGenes-blast.txt
+
+BLAST execution time was 714 s for exonicReads+normal space.
+
+ritesh@watt20:~/scripts/output_blast$ cat exonicReadsOnHumanGenes-blast.txt | awk '$8-$7 > 68 {print $0}' | cut -f1 | uniq | wc -l
+589
+
+--
+BLAST_DB=../Databases/Ensemble-Human-genes-PP.fa
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1-PP.fa
+OUTPUT_FILE=output_blast/exonicReadsOnHumanGenes-blast-PP.txt
+
+It was again taking long time, so the job was killed in middle.
+--
+ 

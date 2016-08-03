@@ -1,0 +1,3 @@
+perl performBLAST.pl ../Simulated-Data/MM7-read1.fa ../Databases/Ensemble-Human-genes.fa
+perl performBLASTonly.pl ../Simulated-Data/MM7-read2.fa ../Databases/Ensemble-Human-genes.fa
+perl performBLASTonly.pl ../Simulated-Data/PP-Space/MM7-read1.pp.fa ../Databases/Ensemble-Human-genes-PP.fa &

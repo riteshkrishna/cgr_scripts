@@ -1,0 +1,7 @@
+./../TophatMapping/edinburgh_WBPS2/out_29/transcripts.gtf
+./../TophatMapping/edinburgh_WBPS2/out_30/transcripts.gtf
+./../TophatMapping/edinburgh_WBPS2/out_31/transcripts.gtf
+./../TophatMapping/edinburgh_WBPS2/out_39/transcripts.gtf
+./../TophatMapping/edinburgh_WBPS2/out_40/transcripts.gtf
+./../TophatMapping/edinburgh_WBPS2/out_41/transcripts.gtf
+

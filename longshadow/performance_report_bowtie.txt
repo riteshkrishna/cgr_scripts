@@ -1,0 +1,108 @@
+Normal space - Default bowtie 
+
+BOWTIE_DB=../Bowtie-2-Indices/Ensemble-Human-genes
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1.fq
+SAM_FILE=output_bowtie/exonicreadsOnEnsemblehuman.sam
+
+13219 reads; of these:
+  13219 (100.00%) were unpaired; of these:
+    12735 (96.34%) aligned 0 times
+    408 (3.09%) aligned exactly 1 time
+    76 (0.57%) aligned >1 times
+3.66% overall alignment rate
+Time searching: 00:00:03
+Overall time: 00:00:03
+execution time was 3 s
+
+--
+Normal Space - --very-fast-local option
+
+BOWTIE_DB=../Bowtie-2-Indices/Ensemble-Human-genes
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1.fq
+SAM_FILE=output_bowtie/exonicReadsOnEnsemblehuman-veryfastlocal.sam
+
+Time loading reference: 00:00:03
+Time loading forward index: 00:00:08
+Time loading mirror index: 00:00:06
+Multiseed full-index search: 00:00:00
+13219 reads; of these:
+  13219 (100.00%) were unpaired; of these:
+    12567 (95.07%) aligned 0 times
+    424 (3.21%) aligned exactly 1 time
+    228 (1.72%) aligned >1 times
+4.93% overall alignment rate
+Time searching: 00:00:17
+Overall time: 00:00:17
+execution time was 17 s
+
+--
+
+RY  space - default bowtie
+
+BOWTIE_DB=../Bowtie-2-Indices/Ensemble-Human-genes-PP
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1-PP.fq
+SAM_FILE=output_bowtie/exonicreadsOnEnsemblehuman-PP.sam
+
+Time loading reference: 00:00:01
+Time loading forward index: 00:00:05
+Time loading mirror index: 00:00:00
+Multiseed full-index search: 00:00:16
+13219 reads; of these:
+  13219 (100.00%) were unpaired; of these:
+    12512 (94.65%) aligned 0 times
+    519 (3.93%) aligned exactly 1 time
+    188 (1.42%) aligned >1 times
+5.35% overall alignment rate
+Time searching: 00:00:22
+Overall time: 00:00:22
+execution time was 22 s
+
+--
+RY space - --very-fast-local
+
+BOWTIE_DB=../Bowtie-2-Indices/Ensemble-Human-genes-PP
+QUERY_FILE=/pub9/ritesh/Simulated-Data/exonicReads-read1-PP.fq
+SAM_FILE=output_bowtie/exonicReadsOnEnsemblehuman-veryfastlocal-PP.sam
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:01
+Time loading mirror index: 00:00:00
+Multiseed full-index search: 00:00:07
+13219 reads; of these:
+  13219 (100.00%) were unpaired; of these:
+    0 (0.00%) aligned 0 times
+    0 (0.00%) aligned exactly 1 time
+    13219 (100.00%) aligned >1 times
+100.00% overall alignment rate
+Time searching: 00:00:08
+Overall time: 00:00:08
+execution time was 8 s
+
+--
+testing the --very-fast-local option on the whole read from chr 7, and we get
+
+BOWTIE_DB=../Bowtie-2-Indices/Ensemble-Human-genes-PP
+QUERY_FILE=../Simulated-Data/PP-Space/MM7-read1.pp.fq
+SAM_FILE=output/MM7-read1-PP-OnEnsemblehuman-veryfastlocal.sam
+
+
+./bowtie_profile.sh
+
+Multiseed full-index search: 00:20:53
+1000000 reads; of these:
+  1000000 (100.00%) were unpaired; of these:
+    24648 (2.46%) aligned 0 times
+    0 (0.00%) aligned exactly 1 time
+    975352 (97.54%) aligned >1 times
+97.54% overall alignment rate
+Time searching: 00:20:55
+Overall time: 00:20:55
+execution time was 1255 s
+
+Also, we have -
+ritesh@watt20:~/scripts/output$ grep -v '@' MM7-read1-PP-OnEnsemblehuman-veryfastlocal.sam | awk '{if ($6 == "70M") {print $0}}' | wc -l
+17355
+
+Which means that in local-alignment mode, we have around 17K reads which are exact matches ! so, what are these reads, exons ? 
+--
+
